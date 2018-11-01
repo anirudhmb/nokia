@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
+import {Redirect} from 'react-router-dom';
+import {Switch} from 'react-router';
 
 export default class Login extends Component {
   constructor(props) {
@@ -24,6 +26,7 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.history.push("/dashboard");
   }
 
   render() {
@@ -47,14 +50,9 @@ export default class Login extends Component {
               type="password"
             />
           </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
+          
+          
+          <input type="submit" value="Login" disabled={!this.validateForm()}/>
         </form>
       </div>
     );
